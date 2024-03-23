@@ -7,16 +7,16 @@ const Author = () => {
 
 
   return (
-    <div className="flex flex-col justify-center mx-auto w-full shadow-md rounded-xl sm:px-12 text-gray-800">
+    <div className="flex flex-col justify-center mx-auto w-full shadow-md rounded-xl sm:px-12 ">
       <img
         src={profile_image}
         alt=""
-        className="w-32 h-32 mx-auto rounded-full bg-gray-500 aspect-square"
+        className="w-32 h-32 mx-auto rounded-full aspect-square"
       />
       <div className="space-y-4 text-center divide-y divide-gray-300">
         <div className="my-2 space-y-1">
           <h2 className="text-xl font-semibold sm:text-2xl">{name}</h2>
-          <p className="px-5 text-xs sm:text-base text-gray-600">
+          <p className="px-5 text-xs sm:text-base ">
             User Name: {username}
           </p>
         </div>
@@ -26,7 +26,7 @@ const Author = () => {
             target='_blank'
             href={`https://github.com/${github_username}`}
             aria-label="GitHub"
-            className="p-2 rounded-md text-gray-800 hover:text-lime-600"
+            className="p-2 rounded-md hover:text-lime-600"
           >
             <svg
               viewBox="0 0 496 512"
@@ -40,7 +40,7 @@ const Author = () => {
             rel="noopener noreferrer"
             href={website_url}            
             aria-label="Dribble"
-            className="p-2 rounded-md text-gray-800 hover:text-lime-600"
+            className="p-2 rounded-md hover:text-lime-600"
           >
             <svg
               viewBox="0 0 512 512"
@@ -55,7 +55,7 @@ const Author = () => {
             target="_blank"
             href={`https://twitter.com/${twitter_username}`}
             aria-label="Twitter"
-            className="p-2 rounded-md text-gray-800 hover:text-lime-600"
+            className="p-2 rounded-md hover:text-lime-600"
           >
             <svg
               viewBox="0 0 512 512"
