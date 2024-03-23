@@ -2,46 +2,61 @@ import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 
 const Nav = () => {
+  const [theme, setTheme] = useState("light");
 
-  const [theme, setTheme] = useState('light');
+  useEffect(() => {
+    localStorage.setItem("theme", theme);
+    const localTheme = localStorage.getItem("theme");
+    document.querySelector("html").setAttribute("data-theme", localTheme);
+  }, [theme]);
 
-  useEffect(() =>{
-    localStorage.setItem('theme', theme);
-    const localTheme = localStorage.getItem('theme');
-    document.querySelector('html').setAttribute('data-theme', localTheme)
-  },[theme]);
-
-  const handleTheme = e => {
-    if(e.target.checked){
-      setTheme('halloween')
-    }else{
-      setTheme('light')
+  const handleTheme = (e) => {
+    if (e.target.checked) {
+      setTheme("halloween");
+    } else {
+      setTheme("light");
     }
-  }
+  };
   console.log(theme);
 
-  
   return (
     <div>
-      <div className="navbar shadow-lg fixed px-4 sm:px-8 bg-base-100 z-10">
+      <div className="flex flex-col sm:flex-row navbar shadow-lg fixed px-4 sm:px-8 bg-base-100 z-10">
         <div className="flex-1">
-          <NavLink to="/" className="btn btn-ghost gap-0 text-secondary flex item-center text-2xl font-bold">
+          <NavLink
+            to="/"
+            className="btn btn-ghost gap-0 text-secondary flex item-center text-2xl font-bold"
+          >
             Byte<span className="text-primary">Blaze</span>
           </NavLink>
         </div>
-        <div className="flex-none gap-2">
-          <ul className="menu menu-horizontal px-1 hidden sm:flex gap-5">
-            <NavLink to="/" className={({isActive}) => isActive ? 'text-primary font-bold': 'font-bold'} >
+        <div className="flex flex-col md:flex-row">
+          <ul className="menu menu-horizontal px-1 flex gap-5">
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                isActive ? "text-primary font-bold" : "font-bold"
+              }
+            >
               <a>Home</a>
             </NavLink>
-            <NavLink to='/blogs' className={({isActive}) => isActive ? 'text-primary font-bold': 'font-bold'}>
+            <NavLink
+              to="/blogs"
+              className={({ isActive }) =>
+                isActive ? "text-primary font-bold" : "font-bold"
+              }
+            >
               <a>Blogs</a>
             </NavLink>
-            <NavLink to="/bookmarks" className={({isActive}) => isActive ? 'text-primary font-bold': 'font-bold'}>
+            <NavLink
+              to="/bookmarks"
+              className={({ isActive }) =>
+                isActive ? "text-primary font-bold" : "font-bold"
+              }
+            >
               <a>Bookmarks</a>
             </NavLink>
-          </ul> 
-          <label className="cursor-pointer grid place-items-center">
+            <label className="cursor-pointer grid place-items-center">
               <input
                 onChange={handleTheme}
                 type="checkbox"
@@ -77,7 +92,8 @@ const Nav = () => {
               >
                 <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
               </svg>
-            </label>         
+            </label>
+          </ul>
         </div>
       </div>
     </div>
